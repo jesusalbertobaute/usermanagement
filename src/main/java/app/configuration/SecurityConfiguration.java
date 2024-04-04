@@ -14,6 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import app.jwt.JwtFilter;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -22,6 +23,7 @@ import lombok.RequiredArgsConstructor;
 public class SecurityConfiguration {
 
 	private static final String[] WHITE_LIST_URL = {
+		"/user/register",	/*Eliminar esta*/
 		"/h2-console/**",
 		"/user/login"
 	};
@@ -29,6 +31,8 @@ public class SecurityConfiguration {
 	private static final String[] CSRF_LIST_IGNORING_URL = {
 		"/user/register"
 	};
+	
+	private final JwtFilter jwtFilter;
  
 
     @Bean
@@ -43,6 +47,7 @@ public class SecurityConfiguration {
 				.anyRequest().authenticated()
 			)
 			.sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+			//.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
             .logout(logout ->
                         logout.logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
                 );
