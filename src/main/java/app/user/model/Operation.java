@@ -9,7 +9,7 @@ public enum Operation {
     USER_UPDATE("USER_UPDATE"),
     USER_CREATE("USER_CREATE"),
     USER_DELETE("USER_DELETE"),
-    USER_SELF_READ("USER_SELF_READ");
+    USER_VERIFY("USER_VERIFY");
 
     @Getter
     private final String operation;

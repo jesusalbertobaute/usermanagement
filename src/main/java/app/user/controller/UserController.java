@@ -5,7 +5,10 @@ import java.util.NoSuchElementException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,11 +23,13 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
+@EnableMethodSecurity
 public class UserController {
 	private final UserService userService;  
 	private final LoginService loginService;
 
 	@PostMapping(path="/register",consumes=MediaType.APPLICATION_JSON_VALUE,produces=MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasAuthority('USER_CREATE')")
 	public ResponseEntity<UserResponse> register(
 			@RequestBody RegisterRequest  request
 			) {
@@ -58,6 +63,16 @@ public class UserController {
 			loginResponse = new LoginResponse("Ha ocurrido un error al intentar auntenticar al usuario","");
 			return new ResponseEntity<>(loginResponse,HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+
+	}
+	
+	@GetMapping(path="/verify",produces=MediaType.APPLICATION_JSON_VALUE)
+	@PreAuthorize("hasAuthority('USER_VERIFY')")
+	public ResponseEntity<MessageResponse> verifyUser() {
+		MessageResponse messageResponse = new MessageResponse("El Usuario tiene este privilegio");
+		return new ResponseEntity<>(messageResponse,HttpStatus.OK);
+		
+		
 
 	}
 

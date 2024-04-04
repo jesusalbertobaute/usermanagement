@@ -37,6 +37,7 @@ public class LoginService {
 		}
 
 		user.setLastLogin(LocalDateTime.now());
+		user.setToken(jwtToken);
 		repository.save(user);
 
 		return LoginResponse.builder()

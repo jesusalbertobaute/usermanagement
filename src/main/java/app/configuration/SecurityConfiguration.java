@@ -23,7 +23,6 @@ import lombok.RequiredArgsConstructor;
 public class SecurityConfiguration {
 
 	private static final String[] WHITE_LIST_URL = {
-		"/user/register",	/*Eliminar esta*/
 		"/h2-console/**",
 		"/user/login"
 	};
@@ -47,7 +46,7 @@ public class SecurityConfiguration {
 				.anyRequest().authenticated()
 			)
 			.sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
-			//.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+			.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
             .logout(logout ->
                         logout.logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
                 );
