@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "72e54b70-aa30-499c-8c61-b3997e691a01",
+		"name": "UserManagement",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6281656"
+	},
+	"item": [
+		{
+			"name": "user-register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYXZpZXJAZGlhei5vcmciLCJpYXQiOjE3MTIyNzA4MjIsImV4cCI6MTcxMjI3NDQyMn0.qDwVV0O3KAXBonHFZfYN_m2SXhtU1WukJwsZ4FB2je4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"name\": \"Javier Diaz\",\r\n\"email\": \"javier@diaz.org\",\r\n\"password\": \"yjn!gLggsu2\",\r\n\"phones\": [\r\n    {\r\n    \"number\": \"1234577\",\r\n    \"citycode\": \"1\",\r\n    \"contrycode\": \"56\"\r\n    }\r\n]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-admin-login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"email\": \"jesus@baute.org\",\r\n   \"password\": \"hmn!gLgfsu2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"email\": \"javier@diaz.org\",\r\n   \"password\": \"yjn!gLggsu2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verify",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZXN1c0BiYXV0ZS5vcmciLCJpYXQiOjE3MTIyNzA4MDQsImV4cCI6MTcxMjI3NDQwNH0.n6W89sqnFJEbIjwIocrcOKT9eUqKl2WIGh48igmo-P0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/user/verify",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"verify"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
