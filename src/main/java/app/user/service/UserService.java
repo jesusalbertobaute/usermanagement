@@ -73,7 +73,7 @@ public class UserService {
    }
     
     
-   private String buildMessageUserException(User user) {
+   public String buildMessageUserException(User user) {
 	   
 	   StringBuilder message= new StringBuilder("");
 	   
@@ -97,10 +97,8 @@ public class UserService {
 		   message.append("El Password no puede estar vacio");
 		   return message.toString();
 	   }
-	   
+	  
 	   if (!user.getPassword().matches(formatPassword)) {
-		   System.out.println("Password: " + user.getPassword());
-		   System.out.println("Format Password: " + formatPassword);
 		   message.append("El Password no tiene un formato valido");
 		   return message.toString();
 	   }
@@ -109,5 +107,8 @@ public class UserService {
 	   return message.toString();
    }
    
-    
+   public void setFormatPassword(String formatPassword) {
+	   this.formatPassword = formatPassword;
+   }
+  
 }

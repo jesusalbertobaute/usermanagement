@@ -18,4 +18,6 @@ public class UserResponse {
     	this.message = message;
     	this.user = new UserWrapperData(user);
     }
+    
+    
 }

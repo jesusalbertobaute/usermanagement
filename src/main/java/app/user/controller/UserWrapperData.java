@@ -1,13 +1,10 @@
 package app.user.controller;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import app.user.model.Phone;
-import app.user.model.Role;
 import app.user.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
